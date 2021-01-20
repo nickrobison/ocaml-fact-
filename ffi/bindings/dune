@@ -1,0 +1,5 @@
+(library
+ (name fact_bindings)
+ (public_name fact++.bindings)
+ (modules fact_bindings)
+ (libraries ctypes.stubs ctypes))

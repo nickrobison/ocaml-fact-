@@ -1,0 +1,10 @@
+(library
+ (name fact_ffi)
+ (public_name fact++.ffi)
+ (modules g m)
+ (libraries fact++.bindings ctypes.stubs ctypes))
+
+(rule
+ (targets g.ml)
+ (deps ../stubgen/ffi_stubgen.exe)
+ (action (with-stdout-to %{targets} (run %{deps} -ml))))
