@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Use OCaml 4.11
         uses: avsm/setup-ocaml@v1
         with:
