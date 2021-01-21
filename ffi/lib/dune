@@ -2,9 +2,18 @@
  (name fact_ffi)
  (public_name fact++.ffi)
  (modules g m)
- (libraries fact++.bindings ctypes.stubs ctypes))
+ (libraries fact++.bindings ctypes.stubs ctypes)
+ (foreign_stubs
+  (language c)
+  (flags (-I%{workspace_root}/vendor/fact/FaCT++.C)))
+ (c_library_flags -L%{workspace_root}/vendor/fact/build/FaCT++.C -lfact))
 
 (rule
  (targets g.ml)
  (deps ../stubgen/ffi_stubgen.exe)
  (action (with-stdout-to %{targets} (run %{deps} -ml))))
+
+(rule
+ (targets fact_stubs.c)
+ (deps ../stubgen/ffi_stubgen.exe)
+ (action (with-stdout-to %{targets} (run %{deps} -c))))

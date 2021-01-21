@@ -14,7 +14,9 @@ module M(F: Ctypes.FOREIGN) = struct
 
     let create =
       foreign "fact_reasoning_kernel_new" C.(void @-> returning t)
+
+    let destroy =
+      foreign "fact_reasoning_kernel_free" C.(t @-> returning void)
   end
-
-
 end
+

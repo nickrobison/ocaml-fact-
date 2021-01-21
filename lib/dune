@@ -1,0 +1,4 @@
+(library
+ (name fact)
+ (public_name fact++)
+ (libraries fact++.ffi))

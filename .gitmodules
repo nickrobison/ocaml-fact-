@@ -1,0 +1,3 @@
+[submodule "vendor/fact"]
+	path = vendor/fact
+	url = https://bitbucket.org/dtsarkov/factplusplus.git
