@@ -5,8 +5,8 @@
  (libraries fact++.bindings ctypes.stubs ctypes)
  (foreign_stubs
   (language c)
-  (flags (-I%{workspace_root}/vendor/fact/FaCT++.C)))
- (c_library_flags -L%{workspace_root}/vendor/fact/build/FaCT++.C -lfact))
+  (flags (-I../../vendor/fact/FaCT++.C)))
+ (c_library_flags -L../../vendor/fact/build/FaCT++.C -lfact))
 
 (rule
  (targets g.ml)

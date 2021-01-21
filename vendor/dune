@@ -1,0 +1,10 @@
+(rule
+ (deps (source_tree fact))
+ (targets cmake_install.cmake)
+ (action
+  (no-infer
+   (progn
+    (chdir fact (run cmake .))
+    (chdir fact (run make fact))
+    (copy fact/cmake_install.cmake cmake_install.cmake)
+))))
