@@ -1,10 +1,13 @@
 (rule
  (deps (source_tree fact))
- (targets cmake_install.cmake)
+ (targets libfact.a dllfact.so)
  (action
   (no-infer
    (progn
     (chdir fact (run cmake .))
-    (chdir fact (run make fact))
-    (copy fact/cmake_install.cmake cmake_install.cmake)
+    (chdir fact (run make))
+    (copy fact/FaCT++.C/libfact.a libfact.a)
+    (copy fact/FaCT++.C/libfact.so dllfact.so)
 ))))
+
+(data_only_dirs fact)

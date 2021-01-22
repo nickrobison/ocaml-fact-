@@ -5,4 +5,4 @@ This folder contains a vendored copy of FaCT++ from commit `650a50c`.
 The only changes from the root [repository](https://bitbucket.org/dtsarkov/factplusplus) are as follows:
 
 - Removed Java/JNI build to avoid needing to install a JDK.
-- Modified the `fact` library build to create a static library to ease linking.
+- Modified the `fact` library build to create a static and dynamic library to ease linking with OCaml.
