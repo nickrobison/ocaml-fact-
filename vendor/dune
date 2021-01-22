@@ -1,13 +1,19 @@
+(library
+ (name fact_c)
+ (public_name fact++.c)
+ (preprocess no_preprocessing)
+ (c_library_flags :standard))
+
 (rule
  (deps (source_tree fact))
- (targets libfact.a dllfact.so)
+ (targets libfact.a libfact.so)
  (action
   (no-infer
    (progn
     (chdir fact (run cmake .))
-    (chdir fact (run make))
+    (chdir fact (run make fact factShared))
     (copy fact/FaCT++.C/libfact.a libfact.a)
-    (copy fact/FaCT++.C/libfact.so dllfact.so)
+    (copy fact/FaCT++.C/libfact.so libfact.so)
 ))))
 
 (data_only_dirs fact)

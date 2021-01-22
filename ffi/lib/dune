@@ -2,11 +2,12 @@
  (name fact_ffi)
  (public_name fact++.ffi)
  (modules g m)
- (libraries fact++.bindings ctypes.stubs ctypes)
+ (libraries fact++.bindings ctypes.stubs ctypes fact++.c)
  (foreign_stubs
   (language c)
   (flags (-I../../vendor/fact/FaCT++.C)))
- (c_library_flags -L../../vendor/fact/FaCT++.C -lfact))
+ (c_library_flags :standard -L./vendor -lfact)
+)
 
 (rule
  (targets g.ml)

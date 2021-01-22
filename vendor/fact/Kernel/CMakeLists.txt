@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 2.8.11)
-
 # duplicate global definition here
 set(CMAKE_CXX_STANDARD 11)
 

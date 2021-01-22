@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.11)
+cmake_minimum_required(VERSION 3.0.0)
 project(factplusplus)
 
 # global definition
@@ -25,3 +25,6 @@ endif()
 add_subdirectory(Kernel)
 add_subdirectory(FaCT++)
 add_subdirectory(FaCT++.C)
+
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE__DIR}/../")
