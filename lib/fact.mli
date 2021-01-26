@@ -10,6 +10,17 @@ module RoleExpression: sig
   type t
 end
 
+module ConceptActor: sig
+  type t
+
+  val create: unit -> t
+
+  val get_elements_2d: t -> string list
+
+
+end
+
+
 module Reasoner: sig
   type t
 
@@ -28,6 +39,8 @@ module Reasoner: sig
   val instance_of: t -> IndividualExpression.t -> ConceptExpression.t -> unit
 
   val is_subsumed_by: t -> ConceptExpression.t -> ConceptExpression.t -> bool
+
+  val super_concepts: t -> ConceptExpression.t -> int -> ConceptActor.t -> unit
 
 end
 

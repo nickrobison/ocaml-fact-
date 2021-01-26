@@ -1,5 +1,7 @@
+open Ctypes
 module FFi = Fact_ffi.M
 module R = FFi.Reasoner
+module C = FFi.ConceptActor
 
 module ConceptExpression = struct
   type t = FFi.ConceptExpression.t
@@ -11,6 +13,19 @@ end
 
 module IndividualExpression = struct
   type t = FFi.IndividualExpression.t
+end
+
+module ConceptActor = struct
+  type t = FFi.ConceptActor.t
+
+
+  let create () =
+    let actor = C.create () in
+    Gc.finalise (fun t -> C.destroy t) actor;
+    actor
+
+  let get_elements_2d _t =
+    []
 end
 
 module Reasoner = struct
@@ -42,7 +57,9 @@ module Reasoner = struct
 
   let is_subsumed_by = R.is_subsumed_by
 
+  let super_concepts t expr direct actor =
+    let actr_ptr = allocate FFi.ConceptActor.t actor in
+    R.super_concepts t expr direct actr_ptr;
+    ()
 
 end
-
-

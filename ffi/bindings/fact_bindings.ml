@@ -25,6 +25,20 @@ module M(F: Ctypes.FOREIGN) = struct
     let t: t C.typ = C.ptr C.void
   end
 
+  module ConceptActor = struct
+    type t = unit C.ptr
+    let t: t C.typ = C.ptr C.void
+
+    let create =
+      foreign "fact_concept_actor_new" C.(void @-> returning t)
+
+    let destroy =
+      foreign "fact_actor_free" C.(t @-> returning void)
+
+    let get_elements_2d =
+      foreign "fact_get_elements_2d" C.(t @-> returning (ptr (ptr (ptr (const char)))))
+  end
+
   module Reasoner = struct
     type t = unit C.ptr
     let t: t C.typ = C.ptr C.void
@@ -65,6 +79,11 @@ module M(F: Ctypes.FOREIGN) = struct
   let is_subsumed_by =
     foreign "fact_is_subsumed_by" C.(t @-> ConceptExpression.t @-> ConceptExpression.t @-> returning bool)
 
+  let super_concepts =
+    foreign "fact_get_sup_concepts" C.(t @-> ConceptExpression.t @-> int @-> (ptr ConceptActor.t) @-> returning void)
+
 end
+
+
 end
 

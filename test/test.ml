@@ -1,4 +1,5 @@
 module R = Fact.Reasoner
+module A = Fact.ConceptActor
 
 let binding_test () =
   let k = R.create () in
@@ -12,10 +13,10 @@ let binding_test () =
   R.implies k sm d;
   R.instance_of k i c;
   R.classify k;
-  print_endline "Checking";
   Alcotest.(check bool) "C [= D" true (R.is_subsumed_by k c d);
-  print_endline "Checked"
-
+  let a = A.create () in
+  R.super_concepts k c 0 a;
+  Alcotest.(check (list string)) "Should have concepts" [] (A.get_elements_2d a)
 
 let () =
   Alcotest.run "FaCT++ binding" [
