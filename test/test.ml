@@ -11,8 +11,9 @@ let binding_test () =
   R.implies k sm d;
   R.instance_of k i c;
   R.classify k;
-
-  Alcotest.(check bool) "C [= D" true (R.is_subsumed_by k c d)
+  print_endline "Checking";
+  Alcotest.(check bool) "C [= D" true (R.is_subsumed_by k c d);
+  print_endline "Checked"
 
 
 let () =
