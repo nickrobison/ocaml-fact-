@@ -32,11 +32,35 @@ module M(F: Ctypes.FOREIGN) = struct
     let create =
       foreign "fact_concept_actor_new" C.(void @-> returning t)
 
+    let get_elements_2d =
+      foreign "fact_get_elements_2d" C.(t @-> returning (ptr (ptr (ptr (const char)))))
+
+    let destroy =
+      foreign "fact_actor_free" C.(t @-> returning void)
+  end
+
+  module IndividualActor = struct
+    type t = unit C.ptr
+    let t: t C.typ = C.ptr C.void
+
+    let create =
+      foreign "fact_individual_actor_new" C.(void @-> returning t)
+
     let destroy =
       foreign "fact_actor_free" C.(t @-> returning void)
 
-    let get_elements_2d =
-      foreign "fact_get_elements_2d" C.(t @-> returning (ptr (ptr (ptr (const char)))))
+  end
+
+  module RoleActor = struct
+    type t = unit C.ptr
+    let t: t C.typ = C.ptr C.void
+
+    let create =
+      foreign "fact_o_role_actor_new" C.(void @-> returning t)
+
+    let destroy =
+      foreign "fact_actor_free" C.(t @-> returning void)
+
   end
 
   module Reasoner = struct
