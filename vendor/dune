@@ -2,18 +2,19 @@
  (name fact_c)
  (public_name fact++.c)
  (preprocess no_preprocessing)
+ (foreign_archives vendor)
  (c_library_flags :standard))
 
 (rule
  (deps (source_tree fact))
- (targets libfact.a libfact.so)
+ (targets libvendor.a dllvendor.so)
  (action
   (no-infer
    (progn
     (chdir fact (run cmake .))
     (chdir fact (run make fact factShared))
-    (copy fact/FaCT++.C/libfact.a libfact.a)
-    (copy fact/FaCT++.C/libfact.so libfact.so)
+    (copy fact/FaCT++.C/libfact.a libvendor.a)
+    (copy fact/FaCT++.C/libfact.so dllvendor.so)
 ))))
 
 (data_only_dirs fact)

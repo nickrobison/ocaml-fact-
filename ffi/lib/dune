@@ -5,9 +5,7 @@
  (libraries fact++.bindings ctypes.stubs ctypes fact++.c)
  (foreign_stubs
   (language c)
-  (flags (-I../../vendor/fact/FaCT++.C)))
- (c_library_flags :standard -L./vendor -lfact)
-)
+  (flags (-I../../vendor/fact/FaCT++.C))))
 
 (rule
  (targets g.ml)
