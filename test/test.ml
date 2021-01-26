@@ -2,6 +2,7 @@ module R = Fact.Reasoner
 
 let binding_test () =
   let k = R.create () in
+  Alcotest.(check string) "Should have correct version" "1.7.0-SNAPSHOT" (R.version k);
   let c = R.create_concept k "C" in
   let d = R.create_concept k "D" in
   let i = R.create_individual k "I" in

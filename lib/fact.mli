@@ -15,6 +15,7 @@ module Reasoner: sig
 
   val create: unit -> t
   val classify: t -> unit
+  val version: t -> string
 
   val top: t -> ConceptExpression.t
 

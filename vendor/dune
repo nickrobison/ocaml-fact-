@@ -7,7 +7,7 @@
 
 (rule
  (deps (source_tree fact))
- (targets libvendor.a dllvendor.so libkernel.a)
+ (targets libvendor.a dllvendor.so libKernel.a)
  (action
   (no-infer
    (progn
