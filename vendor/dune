@@ -3,7 +3,7 @@
  (public_name fact++.c)
  (preprocess no_preprocessing)
  (foreign_archives vendor)
- (c_library_flags :standard -lkernel -lstdc++))
+ (c_library_flags :standard -lKernel -lstdc++))
 
 (rule
  (deps (source_tree fact))
