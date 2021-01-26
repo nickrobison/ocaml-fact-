@@ -2,6 +2,7 @@ module R = Fact.Reasoner
 
 let binding_test () =
   let k = R.create () in
+  Alcotest.(check string) "Should have correct version" "1.7.0-SNAPSHOT" (R.version k);
   let c = R.create_concept k "C" in
   let d = R.create_concept k "D" in
   let i = R.create_individual k "I" in
@@ -11,8 +12,9 @@ let binding_test () =
   R.implies k sm d;
   R.instance_of k i c;
   R.classify k;
-
-  Alcotest.(check bool) "C [= D" true (R.is_subsumed_by k c d)
+  print_endline "Checking";
+  Alcotest.(check bool) "C [= D" true (R.is_subsumed_by k c d);
+  print_endline "Checked"
 
 
 let () =

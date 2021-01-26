@@ -24,6 +24,8 @@ module Reasoner = struct
 
   let classify = R.classify
 
+  let version = R.version
+
   let top = R.top
 
   let create_concept = R.create_concept

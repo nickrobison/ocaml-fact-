@@ -2,6 +2,8 @@ module M(F: Ctypes.FOREIGN) = struct
 
   let foreign = F.foreign
 
+  let const x = x
+
   module C = struct
     include Ctypes
     let (@->) = F.(@->)
@@ -35,6 +37,9 @@ module M(F: Ctypes.FOREIGN) = struct
 
     let destroy =
       foreign "fact_reasoning_kernel_free" C.(t @-> returning void)
+
+    let version =
+      foreign "fact_get_version" C.(t @-> returning (const string))
 
     let top =
       foreign "fact_top" C.(t @-> returning ConceptExpression.t)
