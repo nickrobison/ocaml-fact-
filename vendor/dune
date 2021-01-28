@@ -7,15 +7,15 @@
 
 (rule
  (deps (source_tree fact))
- (targets libvendor.a dllvendor.so libKernel.a)
+ (targets libvendor%{ext_lib} dllvendor%{ext_dll} libKernel%{ext_lib})
  (action
   (no-infer
    (progn
     (chdir fact (run cmake .))
     (chdir fact (run make fact factShared))
-    (copy fact/FaCT++.C/libfact.a libvendor.a)
-    (copy fact/FaCT++.C/libfact.so dllvendor.so)
-    (copy fact/Kernel/libKernel.a libKernel.a)
+    (copy fact/FaCT++.C/libfact%{ext_lib} libvendor%{ext_lib})
+    (copy fact/FaCT++.C/libfact%{ext_dll} dllvendor%{ext_dll})
+    (copy fact/Kernel/libKernel%{ext_lib} libKernel%{ext_lib})
 ))))
 
 (data_only_dirs fact)
